@@ -25,29 +25,35 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity listar() {
-    	    	
-    	List<Usuario> lista = new ArrayList<Usuario>();
-    	
-    	Usuario u = new Usuario();
-    	u.setNome("João");
-    	u.setIdade(69);
-    	u.setEndereco("Rua xyz, 900");
-    	lista.add(u);
-    	
-    	u = new Usuario();
-    	u.setNome("Maria");
-    	u.setIdade(59);
-    	u.setEndereco("Rua abc, 200");
-    	lista.add(u);
-    	
-    	u = new Usuario();
-    	u.setNome("Eduarda está dormindo");
-    	u.setIdade(29);
-    	u.setEndereco("Rua não sei, 100");
-    	lista.add(u);    	
-    	
-    	return ResponseEntity.status(HttpStatus.OK).body(lista);
+    public ResponseEntity listar() {    	
+    	try {
+        	int numero = 1/0;
+        	    	
+        	List<Usuario> lista = new ArrayList<Usuario>();
+        	
+        	Usuario u = new Usuario();
+        	u.setNome("João");
+        	u.setIdade(69);
+        	u.setEndereco("Rua xyz, 900");
+        	lista.add(u);
+        	
+        	u = new Usuario();
+        	u.setNome("Maria");
+        	u.setIdade(59);
+        	u.setEndereco("Rua abc, 200");
+        	lista.add(u);
+        	
+        	u = new Usuario();
+        	u.setNome("Eduarda está dormindo");
+        	u.setIdade(29);
+        	u.setEndereco("Rua não sei, 100");
+        	lista.add(u);    	
+        	
+        	return ResponseEntity.status(HttpStatus.OK).body(lista);
+    		
+    	} catch (Exception e) {
+    		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("A API encontrou um erro. Consulte o administrador.");
+    	}    	
     }
 
     @GetMapping(path = "/{id}")
